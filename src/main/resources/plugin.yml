@@ -5,3 +5,8 @@ description: skirts' plugin for various utilities like SQLite
 authors: [skirts]
 website: https://curlpipesh.me/
 depend: []
+
+permissions:
+  skirts.util.debug:
+    description: Allow usage of the debug command
+    default: op
