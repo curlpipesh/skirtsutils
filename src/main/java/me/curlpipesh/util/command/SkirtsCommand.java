@@ -34,7 +34,11 @@ public class SkirtsCommand extends Command {
         return executor.onCommand(commandSender, this, commandString, args);
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
 
+    @SuppressWarnings("unused")
     public static final class Builder {
         private String name = "command";
         private String desc = "Default command description";
@@ -50,7 +54,7 @@ public class SkirtsCommand extends Command {
 
         private SkirtsPlugin plugin;
 
-        public Builder() {
+        private Builder() {
         }
 
         public Builder setName(String name) {

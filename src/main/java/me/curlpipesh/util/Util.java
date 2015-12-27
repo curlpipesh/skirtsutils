@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 public class Util extends SkirtsPlugin {
     @Override
     public void onEnable() {
-        this.getCommandManager().registerCommand(new SkirtsCommand.Builder()
+        this.getCommandManager().registerCommand(SkirtsCommand.builder()
                 .setName("skirtsplugin")
                 .setDescription("Used for testing that skirts' plugins work")
                 .setUsage("/skirtsplugin")
