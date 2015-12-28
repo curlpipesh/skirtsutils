@@ -17,10 +17,13 @@ import java.util.stream.Collectors;
  * @author audrey
  * @since 12/27/15.
  */
-public class EntityUtil {
+public final class EntityUtil {
+    private EntityUtil() {
+    }
+
     // Credit to some guy on the Bukkit forums
     // https://bukkit.org/threads/getting-entity-player-is-looking-at.262921/#post-2453991
-    public LivingEntity getTarget(final Player player, final int range) {
+    public static LivingEntity getTarget(final Player player, final int range) {
         final List<Entity> nearbyE = player.getNearbyEntities(range, range, range);
         final Collection<LivingEntity> livingE = nearbyE.stream()
                 .filter(e -> e instanceof LivingEntity).map(e -> (LivingEntity) e)
