@@ -1,6 +1,5 @@
-package me.curlpipesh.util.chat;
+package me.curlpipesh.util.utils;
 
-import me.curlpipesh.util.network.PacketUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

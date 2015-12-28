@@ -1,4 +1,4 @@
-package me.curlpipesh.util.network;
+package me.curlpipesh.util.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

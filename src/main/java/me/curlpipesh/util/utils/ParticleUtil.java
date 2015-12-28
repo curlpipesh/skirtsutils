@@ -1,6 +1,5 @@
-package me.curlpipesh.util.particle;
+package me.curlpipesh.util.utils;
 
-import me.curlpipesh.util.network.PacketUtil;
 import net.minecraft.server.v1_8_R2.EnumParticle;
 import net.minecraft.server.v1_8_R2.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;

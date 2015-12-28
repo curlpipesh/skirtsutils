@@ -1,6 +1,6 @@
 package me.curlpipesh.util;
 
-import me.curlpipesh.util.chat.MessageUtil;
+import me.curlpipesh.util.utils.MessageUtil;
 import me.curlpipesh.util.command.SkirtsCommand;
 import me.curlpipesh.util.plugin.SkirtsPlugin;
 import org.bukkit.entity.Player;

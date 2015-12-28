@@ -1,7 +1,7 @@
 package me.curlpipesh.util.command;
 
 import lombok.Getter;
-import me.curlpipesh.util.chat.MessageUtil;
+import me.curlpipesh.util.utils.MessageUtil;
 import me.curlpipesh.util.plugin.SkirtsPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author audrey
  * @since 12/21/15.
  */
-public class SkirtsCommand extends Command {
+public final class SkirtsCommand extends Command {
     private CommandExecutor executor;
 
     @Getter
@@ -46,7 +46,7 @@ public class SkirtsCommand extends Command {
         private String label = "skirtsplugin";
 
         private String permissionNode;
-        private String permissionMessage = SkirtsPlugin.PREFIX + " " + ChatColor.RED + "You don't have permission to do that!" + ChatColor.RESET;
+        private String permissionMessage = SkirtsPlugin.PREFIX + ' ' + ChatColor.RED + "You don't have permission to do that!" + ChatColor.RESET;
 
         private final List<String> aliases = new ArrayList<>();
 
@@ -57,48 +57,48 @@ public class SkirtsCommand extends Command {
         private Builder() {
         }
 
-        public Builder setName(String name) {
+        public Builder setName(final String name) {
             this.name = name;
-            this.usage = "/" + name;
+            usage = '/' + name;
             return this;
         }
 
-        public Builder setDescription(String desc) {
+        public Builder setDescription(final String desc) {
             this.desc = desc;
             return this;
         }
 
-        public Builder setLabel(String label) {
+        public Builder setLabel(final String label) {
             this.label = label;
             return this;
         }
 
-        public Builder setUsage(String usage) {
+        public Builder setUsage(final String usage) {
             this.usage = usage;
             return this;
         }
 
-        public Builder addAlias(String alias) {
-            this.aliases.add(alias);
+        public Builder addAlias(final String alias) {
+            aliases.add(alias);
             return this;
         }
 
-        public Builder setPermissionNode(String permissionNode) {
+        public Builder setPermissionNode(final String permissionNode) {
             this.permissionNode = permissionNode;
             return this;
         }
 
-        public Builder setPermissionMessage(String permissionMessage) {
-            this.permissionNode = permissionMessage;
+        public Builder setPermissionMessage(final String permissionMessage) {
+            this.permissionMessage = permissionMessage;
             return this;
         }
 
-        public Builder setExecutor(CommandExecutor executor) {
+        public Builder setExecutor(final CommandExecutor executor) {
             this.executor = executor;
             return this;
         }
 
-        public Builder setPlugin(SkirtsPlugin plugin) {
+        public Builder setPlugin(final SkirtsPlugin plugin) {
             this.plugin = plugin;
             return this;
         }
@@ -107,10 +107,10 @@ public class SkirtsCommand extends Command {
             if(permissionNode == null || permissionNode.isEmpty()) {
                 throw new IllegalStateException("Tried to build a command without a permission node!");
             }
-            final SkirtsCommand command = new SkirtsCommand(this.name, this.desc, this.usage, this.aliases);
+            final SkirtsCommand command = new SkirtsCommand(name, desc, usage, aliases);
             command.setPermission(permissionNode);
             command.setPermissionMessage(permissionMessage);
-            command.executor = this.executor;
+            command.executor = executor;
             return command;
         }
     }
