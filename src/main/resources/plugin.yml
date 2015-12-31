@@ -5,6 +5,7 @@ description: skirts' plugin for various utilities like SQLite
 authors: [skirts]
 website: https://curlpipesh.me/
 depend: []
+loadbefore: [Essentials]
 
 permissions:
   skirts.util.debug:

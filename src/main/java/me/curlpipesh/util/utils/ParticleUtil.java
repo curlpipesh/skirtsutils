@@ -5,6 +5,7 @@ import net.minecraft.server.v1_8_R2.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 /**
  * @author audrey
@@ -16,7 +17,7 @@ public final class ParticleUtil {
 
     private ParticleUtil() {
     }
-    
+
     public static void sendParticleToPlayer(final Player player, final EnumParticle particle) {
         sendParticleToPlayer(player, particle, 1F, 1);
     }
@@ -34,29 +35,37 @@ public final class ParticleUtil {
         PacketUtil.sendPacket(player, new PacketPlayOutWorldParticles(particle, false, (float) player.getLocation().getX(),
                 (float) player.getLocation().getY(), (float) player.getLocation().getZ(), 0, 0, 0, speed, count));
     }
-    
+
     public static void sendParticleToLocation(final Location location, final EnumParticle particle) {
         Bukkit.getOnlinePlayers().stream()
                 .filter(player -> player.getLocation().distance(location) <= MAX_PARTICLE_DISTANCE)
                 .forEach(player -> sendParticleToPlayer(player, particle));
     }
-    
+
     public static void sendParticleToLocation(final Location location, final EnumParticle particle, final float speed) {
         Bukkit.getOnlinePlayers().stream()
                 .filter(player -> player.getLocation().distance(location) <= MAX_PARTICLE_DISTANCE)
                 .forEach(player -> sendParticleToPlayer(player, particle, speed));
     }
-    
+
     public static void sendParticleToLocation(final Location location, final EnumParticle particle, final int count) {
         Bukkit.getOnlinePlayers().stream()
                 .filter(player -> player.getLocation().distance(location) <= MAX_PARTICLE_DISTANCE)
                 .forEach(player -> sendParticleToPlayer(player, particle, count));
     }
-    
+
     public static void sendParticleToLocation(final Location location, final EnumParticle particle, final float speed,
                                               final int count) {
         Bukkit.getOnlinePlayers().stream()
                 .filter(player -> player.getLocation().distance(location) <= MAX_PARTICLE_DISTANCE)
                 .forEach(player -> sendParticleToPlayer(player, particle, speed, count));
+    }
+
+    public static void drawLineBetweenVectorsWithInterval(final Vector v1, final Vector v2, final EnumParticle particle,
+                                                          final double length, final double interval) {
+        final Vector u = new Vector(v1.getX(), v1.getY(), v1.getZ()).subtract(v2).normalize();
+        for(double i = 0; i <= length; i += interval) {
+            Vector v = v1.clone().add(u.clone().multiply(i));
+        }
     }
 }
