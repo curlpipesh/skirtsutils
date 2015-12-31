@@ -31,7 +31,11 @@ public final class SkirtsCommand extends Command {
             MessageUtil.sendMessage(commandSender, getPermissionMessage());
             return true;
         }
-        return executor.onCommand(commandSender, this, commandString, args);
+        final boolean retVal = executor.onCommand(commandSender, this, commandString, args);
+        if(!retVal) {
+            MessageUtil.sendMessage(commandSender, getUsage());
+        }
+        return retVal;
     }
 
     public static Builder builder() {
