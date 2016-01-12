@@ -14,15 +14,25 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * Various entity-related utilities
+ *
  * @author audrey
  * @since 12/27/15.
  */
+@SuppressWarnings("unused")
 public final class EntityUtil {
     private EntityUtil() {
     }
 
-    // Credit to some guy on the Bukkit forums
-    // https://bukkit.org/threads/getting-entity-player-is-looking-at.262921/#post-2453991
+    /**
+     * Gets the entity that a player is looking at within the given range.
+     *
+     * Author: Some guy on the Bukkit forums
+     * See also: <a href="https://bukkit.org/threads/getting-entity-player-is-looking-at.262921/#post-2453991">This link</a>
+     * @param player The player to use
+     * @param range The maximum distance to find an entity at
+     * @return The entity found, or null if no entity.
+     */
     public static LivingEntity getTarget(final Player player, final int range) {
         final List<Entity> nearbyE = player.getNearbyEntities(range, range, range);
         final Collection<LivingEntity> livingE = nearbyE.stream()

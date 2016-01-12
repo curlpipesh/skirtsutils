@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
+ * MySQL database implementation
+ *
  * @author TehNeon
  * @since 12/22/15.
  */

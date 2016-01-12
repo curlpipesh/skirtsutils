@@ -20,43 +20,47 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public abstract class Database implements IDatabase {
     @Getter
     @Setter
+    @SuppressWarnings("FieldMayBeFinal")
     private String databaseName;
 
     @Getter
     @Setter
+    @SuppressWarnings("FieldMayBeFinal")
     private File databaseFile;
 
     @Getter
     @Setter
+    @SuppressWarnings("FieldMayBeFinal")
     private Connection connection;
 
     @Getter
-    private SkirtsPlugin plugin;
+    private final SkirtsPlugin plugin;
 
     @Getter
     @Setter
-    private boolean connected = false;
+    @SuppressWarnings("FieldMayBeFinal")
+    private boolean connected;
 
     @Getter
     private final List<Runnable> initializationTasks;
 
-    public Database(@NonNull SkirtsPlugin plugin, @NonNull String databaseName) {
+    public Database(@NonNull final SkirtsPlugin plugin, @NonNull final String databaseName) {
         this.databaseName = databaseName;
         this.plugin = plugin;
         databaseFile = new File(plugin.getDataFolder() + File.separator + databaseName + ".db");
         initializationTasks = new CopyOnWriteArrayList<>();
     }
 
-    public boolean addInitTask(@NonNull Runnable task) {
+    public boolean addInitTask(@NonNull final Runnable task) {
         return initializationTasks.add(task);
     }
 
-    public final boolean execute(@NonNull PreparedStatement s) {
+    public final boolean execute(@NonNull final PreparedStatement s) {
         try {
-            boolean state = s.execute();
+            final boolean state = s.execute();
             s.close();
             return state;
-        } catch(SQLException e) {
+        } catch(final SQLException e) {
             e.printStackTrace();
             return false;
         }

@@ -10,15 +10,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
+ * SQLite database implementation
+ *
  * @author audrey
  * @since 8/23/15.
  */
-@SuppressWarnings("Duplicates")
+@SuppressWarnings({"Duplicates", "unused"})
 public class SQLiteDatabase extends Database {
     @Getter
     private final String initializationStatement;
 
-    public SQLiteDatabase(@NonNull SkirtsPlugin plugin, @NonNull String dbName, @NonNull String initializationStatement) {
+    public SQLiteDatabase(@NonNull final SkirtsPlugin plugin, @NonNull final String dbName,
+                          @NonNull final String initializationStatement) {
         super(plugin, dbName);
         this.initializationStatement = initializationStatement;
     }
@@ -34,7 +37,7 @@ public class SQLiteDatabase extends Database {
                 getConnection().setAutoCommit(true);
                 setConnected(true);
                 return true;
-            } catch(SQLException e) {
+            } catch(final SQLException e) {
                 e.printStackTrace();
                 return false;
             }
@@ -53,7 +56,7 @@ public class SQLiteDatabase extends Database {
             getConnection().close();
             setConnected(false);
             state = true;
-        } catch(SQLException e) {
+        } catch(final SQLException e) {
             e.printStackTrace();
             state = false;
         }
@@ -65,11 +68,11 @@ public class SQLiteDatabase extends Database {
     public boolean initialize() {
         boolean created = false;
         try {
-            Statement create = getConnection().createStatement();
+            final Statement create = getConnection().createStatement();
             create.execute(initializationStatement);
             create.close();
             created = true;
-        } catch(SQLException e) {
+        } catch(final SQLException e) {
             e.printStackTrace();
         }
 
@@ -83,7 +86,7 @@ public class SQLiteDatabase extends Database {
         try {
             Class.forName("org.sqlite.JDBC");
             return true;
-        } catch(ClassNotFoundException e) {
+        } catch(final ClassNotFoundException e) {
             e.printStackTrace();
             return false;
         }

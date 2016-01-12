@@ -6,7 +6,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Ye olde Special Snowflake Plugin (R)(C)(TM)(ETC)
+ * Ye olde Special Snowflake Plugin (R)(C)(TM)(ETC). You <b>MUST</b> call
+ * <code>suprt()</code> in your plugin's constructor in order for custom
+ * command registration to work!
  *
  * TODO: Actually make this a special snowflake
  *
@@ -14,13 +16,20 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @since 12/21/15.
  */
 public abstract class SkirtsPlugin extends JavaPlugin {
+    /**
+     * The {@link CommandManager} instance for this plugin. Used for
+     * registering custom commands with Bukkit.
+     */
     @Getter
-    private CommandManager commandManager;
+    private final CommandManager commandManager;
 
-    public static final String PREFIX = ChatColor.GRAY + "[" + ChatColor.RED + "SkirtsPlugin" + ChatColor.GRAY + "]" + ChatColor.RESET;
+    /**
+     * SkirtsPlugin prefix.
+     */
+    public static final String PREFIX = ChatColor.GRAY + "[" + ChatColor.RED + "SkirtsPlugin" + ChatColor.GRAY +
+            ']' + ChatColor.RESET;
 
     public SkirtsPlugin() {
-        super();
-        this.commandManager = new CommandManager(this);
+        commandManager = new CommandManager(this);
     }
 }
