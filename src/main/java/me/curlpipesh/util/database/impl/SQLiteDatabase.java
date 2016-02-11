@@ -8,6 +8,7 @@ import me.curlpipesh.util.plugin.SkirtsPlugin;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 /**
  * SQLite database implementation
@@ -33,7 +34,9 @@ public class SQLiteDatabase extends Database {
         }
         if(doesDriverExist()) {
             try {
-                setConnection(DriverManager.getConnection("jdbc:sqlite:" + getDatabaseFile().getPath()));
+                final Properties properties = new Properties();
+                properties.setProperty("allowMultiQueries", "true");
+                setConnection(DriverManager.getConnection("jdbc:sqlite:" + getDatabaseFile().getPath() + "", properties));
                 getConnection().setAutoCommit(true);
                 setConnected(true);
                 return true;

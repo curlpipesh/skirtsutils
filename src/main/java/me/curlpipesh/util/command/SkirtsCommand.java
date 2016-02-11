@@ -2,6 +2,7 @@ package me.curlpipesh.util.command;
 
 import lombok.Getter;
 import lombok.NonNull;
+import me.curlpipesh.util.command.argument.IFlag;
 import me.curlpipesh.util.plugin.SkirtsPlugin;
 import me.curlpipesh.util.utils.MessageUtil;
 import org.bukkit.ChatColor;
@@ -10,7 +11,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Custom command class that allows for registering commands without touching
@@ -19,6 +22,7 @@ import java.util.List;
  * @author audrey
  * @since 12/21/15.
  */
+@SuppressWarnings("unused")
 public final class SkirtsCommand extends Command {
     /**
      * The executor for this plugin. May not be null.
@@ -31,8 +35,14 @@ public final class SkirtsCommand extends Command {
     @Getter
     private SkirtsPlugin plugin;
 
+    @Getter
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+    private final Collection<IFlag> flags;
+
     private SkirtsCommand(final String name, final String description, final String usageMessage, final List<String> aliases) {
         super(name, description, usageMessage, aliases);
+
+        flags = new ArrayList<>();
     }
 
     @Override
@@ -46,6 +56,11 @@ public final class SkirtsCommand extends Command {
             MessageUtil.sendMessage(commandSender, getUsage());
         }
         return retVal;
+    }
+
+    public Map<IFlag, String> parseFlagsAndValues(final String commandString, final String[] args) {
+        // TODO
+        throw new IllegalStateException("SkirtsCommand#parseFlagsAndValues(String, String[]) isn't implemented yet!");
     }
 
     /**
@@ -109,6 +124,13 @@ public final class SkirtsCommand extends Command {
          * The plugin that registered this command.
          */
         private SkirtsPlugin plugin;
+
+        /**
+         * The list of UNIX-like flags that this command takes. Executors are
+         * expected to deal with flags on their own, although the flags and
+         * values themselves will be parsed out for implementations.
+         */
+        private final Collection<IFlag> flags = new ArrayList<>();
 
         private Builder() {
         }
@@ -214,6 +236,11 @@ public final class SkirtsCommand extends Command {
             this.plugin = plugin;
             return this;
         }
+
+        public Builder addFlag(@NonNull final IFlag flag) {
+            flags.add(flag);
+            return this;
+        }
     
         /**
          * Actually builds the command and returns the instance.
@@ -235,6 +262,7 @@ public final class SkirtsCommand extends Command {
             command.setPermission(permissionNode);
             command.setPermissionMessage(permissionMessage);
             command.executor = executor;
+            command.flags.addAll(flags);
             return command;
         }
     }
