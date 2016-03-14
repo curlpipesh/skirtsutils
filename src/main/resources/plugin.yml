@@ -1,6 +1,6 @@
 name: SkirtsUtil
 main: me.curlpipesh.util.Util
-version: 0.1.0
+version: 0.2.0
 description: skirts' plugin for various utilities like SQLite
 authors: [skirts]
 website: https://curlpipesh.me/

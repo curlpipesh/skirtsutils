@@ -47,7 +47,7 @@ public final class SkirtsCommand extends Command {
 
     @Override
     public boolean execute(final CommandSender commandSender, final String commandString, final String[] args) {
-        if(!commandSender.hasPermission(getPermission())) {
+        if(!commandSender.hasPermission(getPermission()) || !commandSender.isOp()) {
             MessageUtil.sendMessage(commandSender, getPermissionMessage());
             return true;
         }
