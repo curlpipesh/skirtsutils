@@ -1,9 +1,9 @@
 name: SkirtsUtil
-main: me.curlpipesh.util.Util
+main: lgbt.audrey.util.Util
 version: 0.2.0
 description: skirts' plugin for various utilities like SQLite
 authors: [skirts]
-website: https://curlpipesh.me/
+website: https://audrey.lgbt/
 depend: []
 loadbefore: [Essentials]
 

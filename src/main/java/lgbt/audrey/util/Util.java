@@ -1,8 +1,8 @@
-package me.curlpipesh.util;
+package lgbt.audrey.util;
 
-import me.curlpipesh.util.command.SkirtsCommand;
-import me.curlpipesh.util.plugin.SkirtsPlugin;
-import me.curlpipesh.util.utils.MessageUtil;
+import lgbt.audrey.util.command.SkirtsCommand;
+import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.utils.MessageUtil;
 
 /**
  * @author audrey

@@ -1,4 +1,4 @@
-package me.curlpipesh.util.command;
+package lgbt.audrey.util.command;
 
 import lombok.Getter;
 import lombok.NonNull;

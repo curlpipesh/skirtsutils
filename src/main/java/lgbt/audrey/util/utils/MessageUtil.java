@@ -1,4 +1,4 @@
-package me.curlpipesh.util.utils;
+package lgbt.audrey.util.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

@@ -1,10 +1,10 @@
-package me.curlpipesh.util.command;
+package lgbt.audrey.util.command;
 
+import lgbt.audrey.util.command.argument.IFlag;
+import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.utils.MessageUtil;
 import lombok.Getter;
 import lombok.NonNull;
-import me.curlpipesh.util.command.argument.IFlag;
-import me.curlpipesh.util.plugin.SkirtsPlugin;
-import me.curlpipesh.util.utils.MessageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -47,15 +47,16 @@ public final class SkirtsCommand extends Command {
 
     @Override
     public boolean execute(final CommandSender commandSender, final String commandString, final String[] args) {
-        if(!commandSender.hasPermission(getPermission()) || !commandSender.isOp()) {
+        if(commandSender.hasPermission(getPermission()) || commandSender.isOp()) {
+            final boolean retVal = executor.onCommand(commandSender, this, commandString, args);
+            if(!retVal) {
+                MessageUtil.sendMessage(commandSender, getUsage());
+            }
+            return true;
+        } else {
             MessageUtil.sendMessage(commandSender, getPermissionMessage());
             return true;
         }
-        final boolean retVal = executor.onCommand(commandSender, this, commandString, args);
-        if(!retVal) {
-            MessageUtil.sendMessage(commandSender, getUsage());
-        }
-        return retVal;
     }
 
     public Map<IFlag, String> parseFlagsAndValues(final String commandString, final String[] args) {
@@ -65,6 +66,7 @@ public final class SkirtsCommand extends Command {
 
     /**
      * Returns a new {@link Builder} instance for building commands.
+     *
      * @return a new Builder instance
      */
     public static Builder builder() {
@@ -134,11 +136,12 @@ public final class SkirtsCommand extends Command {
 
         private Builder() {
         }
-    
+
         /**
          * Sets the command's name
          *
          * @param name The command's name
+         *
          * @return Itself
          */
         public Builder setName(@NonNull final String name) {
@@ -146,90 +149,98 @@ public final class SkirtsCommand extends Command {
             usage = '/' + name;
             return this;
         }
-    
+
         /**
          * Sets the command's description.
          *
          * @param desc The command's description.
+         *
          * @return Itself
          */
         public Builder setDescription(@NonNull final String desc) {
             this.desc = desc;
             return this;
         }
-    
+
         /**
          * Sets the label for this command. A label is what goes before the ':'
          * character when completing commands that way, such as
          * <code>/essentials:ban</code>.
          *
          * @param label The label to use
+         *
          * @return Itself
          */
         public Builder setLabel(@NonNull final String label) {
             this.label = label;
             return this;
         }
-    
+
         /**
          * Sets the usage for this command
          *
          * @param usage The command's usage string
+         *
          * @return Itself
          */
         public Builder setUsage(@NonNull final String usage) {
             this.usage = usage;
             return this;
         }
-    
+
         /**
          * Adds an alias for this command
          *
          * @param alias The alias to add
+         *
          * @return Itself
          */
         public Builder addAlias(@NonNull final String alias) {
             aliases.add(alias);
             return this;
         }
-    
+
         /**
          * Sets the permission node for this command. Must be called
          *
          * @param permissionNode The permission node to use
+         *
          * @return Itself
          */
         public Builder setPermissionNode(@NonNull final String permissionNode) {
             this.permissionNode = permissionNode;
             return this;
         }
-    
+
         /**
          * Sets the no-perms message.
-         * 
+         *
          * @param permissionMessage The no-perms message
+         *
          * @return Itself
          */
         public Builder setPermissionMessage(@NonNull final String permissionMessage) {
             this.permissionMessage = permissionMessage;
             return this;
         }
-    
+
         /**
          * Sets the {@link CommandExecutor} for this command. Must be called
          *
          * @param executor The CommandExecutor to use
+         *
          * @return Itself
          */
         public Builder setExecutor(@NonNull final CommandExecutor executor) {
             this.executor = executor;
             return this;
         }
-    
+
         /**
          * Sets the plugin that registered this command
-         * 
+         *
          * @param plugin The plugin that registered this command
+         *
          * @return Itself
          */
         public Builder setPlugin(@NonNull final SkirtsPlugin plugin) {
@@ -241,12 +252,12 @@ public final class SkirtsCommand extends Command {
             flags.add(flag);
             return this;
         }
-    
+
         /**
          * Actually builds the command and returns the instance.
-         * 
+         *
          * @return An instance of {@link SkirtsCommand} with the specified
-         *         properties.
+         * properties.
          */
         public Command build() {
             if(permissionNode == null || permissionNode.isEmpty()) {

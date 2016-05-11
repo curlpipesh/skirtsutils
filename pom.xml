@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.curlpipesh.util</groupId>
+    <groupId>lgbt.audrey.util</groupId>
     <artifactId>Util</artifactId>
     <version>0.2.0</version>
 
@@ -19,11 +19,6 @@
             <artifactId>lombok</artifactId>
             <version>1.16.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>3.0.4</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -37,30 +32,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <!-- idefk -->
-                                    <include>org.mongodb:*:*</include>
-                                    <include>com.mongodb:*:*</include>
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 </project>

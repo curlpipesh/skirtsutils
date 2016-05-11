@@ -1,10 +1,10 @@
-package me.curlpipesh.util.database;
+package lgbt.audrey.util.database;
 
 
+import lgbt.audrey.util.plugin.SkirtsPlugin;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import me.curlpipesh.util.plugin.SkirtsPlugin;
 
 import java.io.File;
 import java.sql.Connection;

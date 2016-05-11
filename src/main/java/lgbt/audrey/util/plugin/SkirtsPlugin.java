@@ -1,7 +1,7 @@
-package me.curlpipesh.util.plugin;
+package lgbt.audrey.util.plugin;
 
+import lgbt.audrey.util.command.CommandManager;
 import lombok.Getter;
-import me.curlpipesh.util.command.CommandManager;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 

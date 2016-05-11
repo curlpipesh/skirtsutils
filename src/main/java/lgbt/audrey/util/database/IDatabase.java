@@ -1,6 +1,8 @@
-package me.curlpipesh.util.database;
+package lgbt.audrey.util.database;
 
-import me.curlpipesh.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.database.impl.MySQLDatabase;
+import lgbt.audrey.util.database.impl.SQLiteDatabase;
+import lgbt.audrey.util.plugin.SkirtsPlugin;
 
 import java.io.File;
 import java.sql.Connection;
@@ -73,7 +75,7 @@ public interface IDatabase {
 
     /**
      * The name of the actual database. Also used for DB file names in
-     * {@link me.curlpipesh.util.database.impl.SQLiteDatabase}.
+     * {@link SQLiteDatabase}.
      *
      * @return The database name
      */
@@ -88,9 +90,9 @@ public interface IDatabase {
 
     /**
      * Returns the file being used for the database. Only for
-     * {@link me.curlpipesh.util.database.impl.SQLiteDatabase}.
+     * {@link SQLiteDatabase}.
      *
-     * TODO: This is created for {@link me.curlpipesh.util.database.impl.MySQLDatabase} anyway
+     * TODO: This is created for {@link MySQLDatabase} anyway
      *
      * @return The file being used for the database.
      */

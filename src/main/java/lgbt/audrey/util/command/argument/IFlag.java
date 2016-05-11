@@ -1,4 +1,4 @@
-package me.curlpipesh.util.command.argument;
+package lgbt.audrey.util.command.argument;
 
 /**
  * @author audrey
