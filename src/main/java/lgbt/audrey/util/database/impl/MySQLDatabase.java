@@ -3,7 +3,7 @@ package lgbt.audrey.util.database.impl;
 import lombok.Getter;
 import lombok.NonNull;
 import lgbt.audrey.util.database.Database;
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,7 +29,7 @@ public class MySQLDatabase extends Database {
     @Getter
     private final int port;
 
-    public MySQLDatabase(@NonNull final SkirtsPlugin plugin, @NonNull final String host,
+    public MySQLDatabase(@NonNull final AudreyPlugin plugin, @NonNull final String host,
                          @NonNull final String databaseName, @NonNull final int port, @NonNull final String username,
                          @NonNull final String password, @NonNull final String initializationStatement) {
         super(plugin, databaseName);

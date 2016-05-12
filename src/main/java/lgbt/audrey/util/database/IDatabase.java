@@ -2,7 +2,7 @@ package lgbt.audrey.util.database;
 
 import lgbt.audrey.util.database.impl.MySQLDatabase;
 import lgbt.audrey.util.database.impl.SQLiteDatabase;
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 
 import java.io.File;
 import java.sql.Connection;
@@ -103,7 +103,7 @@ public interface IDatabase {
      *
      * @return The plugin using this database
      */
-    SkirtsPlugin getPlugin();
+    AudreyPlugin getPlugin();
 
     /**
      * Executes the given statement

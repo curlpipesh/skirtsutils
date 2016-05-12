@@ -3,7 +3,7 @@ package lgbt.audrey.util.database.impl;
 import lombok.Getter;
 import lombok.NonNull;
 import lgbt.audrey.util.database.Database;
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ public class SQLiteDatabase extends Database {
     @Getter
     private final String initializationStatement;
 
-    public SQLiteDatabase(@NonNull final SkirtsPlugin plugin, @NonNull final String dbName,
+    public SQLiteDatabase(@NonNull final AudreyPlugin plugin, @NonNull final String dbName,
                           @NonNull final String initializationStatement) {
         super(plugin, dbName);
         this.initializationStatement = initializationStatement;

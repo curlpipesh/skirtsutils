@@ -1,17 +1,17 @@
 package lgbt.audrey.util;
 
-import lgbt.audrey.util.command.SkirtsCommand;
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.command.AudreyCommand;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 import lgbt.audrey.util.utils.MessageUtil;
 
 /**
  * @author audrey
  * @since 12/21/15.
  */
-public class Util extends SkirtsPlugin {
+public class Util extends AudreyPlugin {
     @Override
     public void onEnable() {
-        getCommandManager().registerCommand(SkirtsCommand.builder()
+        getCommandManager().registerCommand(AudreyCommand.builder()
                 .setName("skirtsplugin")
                 .setDescription("Used for testing that skirts' plugins work")
                 .setUsage("/skirtsplugin")
@@ -20,7 +20,7 @@ public class Util extends SkirtsPlugin {
                     if(commandSender.isOp()) {
                         // 0 is dummy argument because ambiguous call
                         MessageUtil.sendMessages(commandSender,
-                                SkirtsPlugin.PREFIX, 0, "Plugins work!");
+                                AudreyPlugin.PREFIX, 0, "Plugins work!");
                     }
                     return true;
                 }).setPlugin(this).build());

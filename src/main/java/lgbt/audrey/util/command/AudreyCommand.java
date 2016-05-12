@@ -1,7 +1,7 @@
 package lgbt.audrey.util.command;
 
 import lgbt.audrey.util.command.argument.IFlag;
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 import lgbt.audrey.util.utils.MessageUtil;
 import lombok.Getter;
 import lombok.NonNull;
@@ -23,7 +23,7 @@ import java.util.Map;
  * @since 12/21/15.
  */
 @SuppressWarnings("unused")
-public final class SkirtsCommand extends Command {
+public final class AudreyCommand extends Command {
     /**
      * The executor for this plugin. May not be null.
      */
@@ -33,13 +33,13 @@ public final class SkirtsCommand extends Command {
      * The plugin that registered this command. May not be null.
      */
     @Getter
-    private SkirtsPlugin plugin;
+    private AudreyPlugin plugin;
 
     @Getter
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private final Collection<IFlag> flags;
 
-    private SkirtsCommand(final String name, final String description, final String usageMessage, final List<String> aliases) {
+    private AudreyCommand(final String name, final String description, final String usageMessage, final List<String> aliases) {
         super(name, description, usageMessage, aliases);
 
         flags = new ArrayList<>();
@@ -61,7 +61,7 @@ public final class SkirtsCommand extends Command {
 
     public Map<IFlag, String> parseFlagsAndValues(final String commandString, final String[] args) {
         // TODO
-        throw new IllegalStateException("SkirtsCommand#parseFlagsAndValues(String, String[]) isn't implemented yet!");
+        throw new IllegalStateException("AudreyCommand#parseFlagsAndValues(String, String[]) isn't implemented yet!");
     }
 
     /**
@@ -109,7 +109,7 @@ public final class SkirtsCommand extends Command {
         /**
          * The "You don't have permission!" message
          */
-        private String permissionMessage = SkirtsPlugin.PREFIX + ' ' + ChatColor.RED + "You don't have permission to do that!" + ChatColor.RESET;
+        private String permissionMessage = AudreyPlugin.PREFIX + ' ' + ChatColor.RED + "You don't have permission to do that!" + ChatColor.RESET;
 
         /**
          * All aliases for this command
@@ -125,7 +125,7 @@ public final class SkirtsCommand extends Command {
         /**
          * The plugin that registered this command.
          */
-        private SkirtsPlugin plugin;
+        private AudreyPlugin plugin;
 
         /**
          * The list of UNIX-like flags that this command takes. Executors are
@@ -243,7 +243,7 @@ public final class SkirtsCommand extends Command {
          *
          * @return Itself
          */
-        public Builder setPlugin(@NonNull final SkirtsPlugin plugin) {
+        public Builder setPlugin(@NonNull final AudreyPlugin plugin) {
             this.plugin = plugin;
             return this;
         }
@@ -256,7 +256,7 @@ public final class SkirtsCommand extends Command {
         /**
          * Actually builds the command and returns the instance.
          *
-         * @return An instance of {@link SkirtsCommand} with the specified
+         * @return An instance of {@link AudreyCommand} with the specified
          * properties.
          */
         public Command build() {
@@ -269,7 +269,7 @@ public final class SkirtsCommand extends Command {
             if(name.isEmpty()) {
                 throw new IllegalStateException("Tried to build a nameless command!");
             }
-            final SkirtsCommand command = new SkirtsCommand(name, desc, usage, aliases);
+            final AudreyCommand command = new AudreyCommand(name, desc, usage, aliases);
             command.setPermission(permissionNode);
             command.setPermissionMessage(permissionMessage);
             command.executor = executor;

@@ -1,7 +1,7 @@
 package lgbt.audrey.util.database;
 
 
-import lgbt.audrey.util.plugin.SkirtsPlugin;
+import lgbt.audrey.util.plugin.AudreyPlugin;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -34,7 +34,7 @@ public abstract class Database implements IDatabase {
     private Connection connection;
 
     @Getter
-    private final SkirtsPlugin plugin;
+    private final AudreyPlugin plugin;
 
     @Getter
     @Setter
@@ -44,7 +44,7 @@ public abstract class Database implements IDatabase {
     @Getter
     private final List<Runnable> initializationTasks;
 
-    public Database(@NonNull final SkirtsPlugin plugin, @NonNull final String databaseName) {
+    public Database(@NonNull final AudreyPlugin plugin, @NonNull final String databaseName) {
         this.databaseName = databaseName;
         this.plugin = plugin;
         databaseFile = new File(plugin.getDataFolder() + File.separator + databaseName + ".db");

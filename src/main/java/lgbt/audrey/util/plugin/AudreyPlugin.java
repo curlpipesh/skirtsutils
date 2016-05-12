@@ -15,7 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author audrey
  * @since 12/21/15.
  */
-public abstract class SkirtsPlugin extends JavaPlugin {
+public abstract class AudreyPlugin extends JavaPlugin {
     /**
      * The {@link CommandManager} instance for this plugin. Used for
      * registering custom commands with Bukkit.
@@ -24,12 +24,12 @@ public abstract class SkirtsPlugin extends JavaPlugin {
     private final CommandManager commandManager;
 
     /**
-     * SkirtsPlugin prefix.
+     * AudreyPlugin prefix.
      */
-    public static final String PREFIX = ChatColor.GRAY + "[" + ChatColor.RED + "SkirtsPlugin" + ChatColor.GRAY +
+    public static final String PREFIX = ChatColor.GRAY + "[" + ChatColor.RED + "AudreyPlugin" + ChatColor.GRAY +
             ']' + ChatColor.RESET;
 
-    public SkirtsPlugin() {
+    public AudreyPlugin() {
         commandManager = new CommandManager(this);
     }
 }
