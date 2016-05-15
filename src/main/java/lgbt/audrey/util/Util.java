@@ -12,10 +12,10 @@ public class Util extends AudreyPlugin {
     @Override
     public void onEnable() {
         getCommandManager().registerCommand(AudreyCommand.builder()
-                .setName("skirtsplugin")
-                .setDescription("Used for testing that skirts' plugins work")
-                .setUsage("/skirtsplugin")
-                .setPermissionNode("skirts.util.debug")
+                .setName("audreyplugin")
+                .setDescription("Used for testing that audrey' plugins work")
+                .setUsage("/audreyplugin")
+                .setPermissionNode("audrey.util.debug")
                 .setExecutor((commandSender, command, s, strings) -> {
                     if(commandSender.isOp()) {
                         // 0 is dummy argument because ambiguous call

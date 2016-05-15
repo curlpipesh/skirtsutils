@@ -77,7 +77,6 @@ public final class AudreyCommand extends Command {
      * Builder class used for constructing commands. Validates input to help
      * prevent invalid command registration.
      */
-    @SuppressWarnings("unused")
     public static final class Builder {
         /**
          * The name of this command.
@@ -99,7 +98,7 @@ public final class AudreyCommand extends Command {
          * character when completing commands that way, such as
          * <code>/essentials:ban</code>.
          */
-        private String label = "skirtsplugin";
+        private String label = "audreyplugin";
 
         /**
          * The permission node for this plugin. May not be null.
